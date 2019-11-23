@@ -26,6 +26,7 @@ void ShortestJobFirst::execute()
         {
             std::cout << "Process Id {"<<process.getID() << "} \n";
             process.executeProcess();
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
     }
     std::cout << std::endl;

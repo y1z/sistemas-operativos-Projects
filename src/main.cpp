@@ -4,19 +4,30 @@
 #include <random>
 
 // simulates the sjf algorithm
-void  sjfAlgorithm(uint32_t ProcessAmount);
+void sjfAlgorithm(uint32_t ProcessAmount);
 
+void start();
 
 int main()
 {
-    std::cout << "Hello wellcome to the shortest job first algorithm!" << std::endl;
+    start();
+}
+
+void start()
+{
+    std::cout << "Hello wellcome to the shortest job first algorithm!\n" << std::endl;
     std::srand(time(nullptr));
-    sjfAlgorithm(100);
+
+    uint32_t options{0  };
+    std::cout << "please select the number of processes to be simulated\n->";
+    std::cin >> options;
+    sjfAlgorithm(options);
+
 }
 
 void sjfAlgorithm(uint32_t ProcessAmount)
 {
-     ShortestJobFirst scheduler;
+    ShortestJobFirst scheduler;
     for (uint32_t i = 0; i < ProcessAmount; ++i)
     {
         int32_t timeAmount = (std::rand() % 6) + 1;
