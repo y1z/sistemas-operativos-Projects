@@ -23,7 +23,7 @@ public:
 
     void setIsTaskBeingUsed(bool beingUsed);
     //! indicates how long a task is going to take
-    void init(uint32_t timeForTask);
+    void init(uint32_t timeForTask,uint32_t idForTask);
 
     //!\brief simulates performing a task
     void performTask();

@@ -7,10 +7,11 @@ cTask::cTask()
     is_beingUsed.store(false);
 }
 
-cTask::cTask(const cTask &other){
-m_id = other.m_id;
-m_timeNeededToFinish = other.m_timeNeededToFinish;
-this->is_beingUsed.store(other.is_beingUsed.load());
+cTask::cTask(const cTask &other)
+{
+    m_id = other.m_id;
+    m_timeNeededToFinish = other.m_timeNeededToFinish;
+    this->is_beingUsed.store(other.is_beingUsed.load());
 }
 
 cTask::~cTask()
@@ -32,19 +33,21 @@ void cTask::setId(uint32_t id)
     m_id = id;
 }
 
-void cTask::setIsTaskBeingUsed(bool beingUsed){
+void cTask::setIsTaskBeingUsed(bool beingUsed)
+{
     this->is_beingUsed.store(beingUsed);
 }
 
-void cTask::init(uint32_t timeForTask)
+void cTask::init(uint32_t timeForTask, uint32_t IdForTask)
 {
     m_timeNeededToFinish = timeForTask;
+    m_id = IdForTask;
 }
 
 void cTask::performTask()
 {
     --m_timeNeededToFinish;
-    is_beingUsed = true;
+    is_beingUsed.store(true);
     std::cout << "time needed to finish [" << m_timeNeededToFinish << "]\n";
 }
 

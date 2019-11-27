@@ -7,6 +7,8 @@
 
 void Start();
 
+void simulateRoundRobin(const uint32_t taskNum);
+
 int main()
 {
     std::srand(time(nullptr));
@@ -15,12 +17,22 @@ int main()
 
 void Start()
 {
-    RoundRobin roundRobin;
-    for(uint32_t i = 0 ; i < 10;++i){
-        cTask task;
-        task.init((std::rand() % 5) + 1);
-        task.setId(i);
-       roundRobin.addTask(task);
-    }
+    uint32_t userTaskAmount{0};
+    std::cout << "please input the amount of task you what to execute \n->";
+    std::cin >> userTaskAmount;
+    std::cout << "Start ";
+    simulateRoundRobin(userTaskAmount);
+}
 
+void simulateRoundRobin(const uint32_t taskNum)
+{
+    RoundRobin scheduler;
+   for (uint32_t i = 0; i < taskNum; i++)
+   {
+       cTask ramdomTask;
+       ramdomTask.init((std::rand() % 5) + 1,i);
+       scheduler.addTask(ramdomTask);
+   }
+    
+    
 }

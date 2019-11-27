@@ -3,7 +3,7 @@ CXX_FLAGS := -Wall -Wextra -std=c++1y -ggdb
 
 BIN		:= bin
 SRC		:= src
-INCLUDE	:= include
+INCLUDE	:= include 
 LIB		:= lib
 
 LIBRARIES	:=
